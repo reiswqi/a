@@ -5,14 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Découvrez Votre Ange Gardien</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <!-- Vturb preload for faster video -->
-  <link rel="preload" href="https://scripts.converteai.net/f6647e7e-ca7e-45b0-a540-5bf8ca46db4a/players/6afb85e557deb9d04337f8a6/v4/player.js" as="script">
-  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="preload" href="https://cdn.converteai.net/f6647e7e-ca7e-45b0-a540-5bf8ca46db4a/6afb85df57deb9d04337f8a5/main.m3u8" as="fetch">
-  <link rel="dns-prefetch" href="https://cdn.converteai.net">
-  <link rel="dns-prefetch" href="https://scripts.converteai.net">
-  <link rel="dns-prefetch" href="https://images.converteai.net">
-  <link rel="dns-prefetch" href="https://api.vturb.com.br">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
@@ -909,7 +901,7 @@
         </div>
       </div>
       <div class="video-player-area">
-        <vturb-smartplayer id="vid-6afb85e557deb9d04337f8a6" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+        <div id="video-player-container" style="width: 100%; max-width: 400px; margin: 0 auto;"></div>
         <p class="video-tagline">🙏 Votre voyage spirituel ne fait que commencer</p>
       </div>
     </div>
@@ -1133,9 +1125,10 @@
       });
     }
     function initVturbVideo() {
-      if (document.getElementById('vturb-script-player')) return;
+      var container = document.getElementById('video-player-container');
+      if (!container || container.innerHTML.trim() !== '') return;
+      container.innerHTML = '<vturb-smartplayer id="vid-6afb85e557deb9d04337f8a6" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>';
       var s = document.createElement("script");
-      s.id = "vturb-script-player";
       s.src = "https://scripts.converteai.net/f6647e7e-ca7e-45b0-a540-5bf8ca46db4a/players/6afb85e557deb9d04337f8a6/v4/player.js";
       s.async = true;
       document.head.appendChild(s);
