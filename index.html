@@ -910,11 +910,6 @@
       </div>
       <div class="video-player-area">
         <vturb-smartplayer id="vid-6afb85e557deb9d04337f8a6" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
-        <script type="text/javascript">
-          var s=document.createElement("script");
-          s.src="https://scripts.converteai.net/f6647e7e-ca7e-45b0-a540-5bf8ca46db4a/players/6afb85e557deb9d04337f8a6/v4/player.js",
-          s.async=!0,document.head.appendChild(s);
-        </script>
         <p class="video-tagline">🙏 Votre voyage spirituel ne fait que commencer</p>
       </div>
     </div>
@@ -1134,7 +1129,16 @@
         document.getElementById('screen-benefits').classList.remove('active');
         document.getElementById('screen-video').classList.add('active');
         window.scrollTo(0, 0);
+        initVturbVideo();
       });
+    }
+    function initVturbVideo() {
+      if (document.getElementById('vturb-script-player')) return;
+      var s = document.createElement("script");
+      s.id = "vturb-script-player";
+      s.src = "https://scripts.converteai.net/f6647e7e-ca7e-45b0-a540-5bf8ca46db4a/players/6afb85e557deb9d04337f8a6/v4/player.js";
+      s.async = true;
+      document.head.appendChild(s);
     }
   </script>
 </body>
